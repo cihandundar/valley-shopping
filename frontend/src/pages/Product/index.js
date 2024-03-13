@@ -9,8 +9,8 @@ import {
 import { FaSearch, FaCartArrowDown, FaEye } from "react-icons/fa";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
-import { addToCart } from "features/product/cartSlice";
-import { addToFavorites, removed } from "features/product/favoritesSlice";
+import { addToCart } from "../../features/product/cartSlice";
+import { addToFavorites, removed } from "../../features/product/favoritesSlice";
 
 const Product = () => {
   const [searchTerm, setSearchTerm] = useState("");

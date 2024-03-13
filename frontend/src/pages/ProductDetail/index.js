@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchProductDetail } from "features/product/productSlice";
-import { addToCart } from "features/product/cartSlice";
+import { fetchProductDetail } from "../../features/product/productSlice";
+import { addToCart } from "../../features/product/cartSlice";
 import { FaStar, FaRegStar } from "react-icons/fa";
 const ProductDetail = () => {
   const details = useSelector((state) => state?.product?.details);

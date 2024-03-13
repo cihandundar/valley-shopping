@@ -1,4 +1,4 @@
-import { addToCart } from "features/product/cartSlice";
+import { addToCart } from "../../features/product/cartSlice";
 import { removed } from "../../features/product/favoritesSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
