@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchProductDetail } from "../../features/product/productSlice";
 import { addToCart } from "../../features/product/cartSlice";
-import { FaStar, FaRegStar } from "react-icons/fa";
 const ProductDetail = () => {
   const details = useSelector((state) => state?.product?.details);
   const isLoading = useSelector((state) => state?.product?.isLoading);
@@ -15,29 +14,6 @@ const ProductDetail = () => {
 
   const handleAdd = (details) => {
     dispatch(addToCart(details));
-  };
-
-  const renderStars = (rate) => {
-    const totalStars = 5;
-    const fullStars = Math.floor(rate);
-    const hasHalfStar = rate % 1 !== 0;
-
-    const starElements = [];
-
-    for (let i = 0; i < fullStars; i++) {
-      starElements.push(<FaStar key={i} />);
-    }
-
-    if (hasHalfStar) {
-      starElements.push(<FaStar half key={fullStars} />);
-    }
-
-    const remainingStars = totalStars - (fullStars + (hasHalfStar ? 1 : 0));
-    for (let i = 0; i < remainingStars; i++) {
-      starElements.push(<FaRegStar key={fullStars + hasHalfStar + i} />);
-    }
-
-    return starElements;
   };
 
   return (
@@ -68,10 +44,7 @@ const ProductDetail = () => {
                   )}
                 </h2>
               </div>
-              <div className="details__right__item rating">
-                <h3> Rating: {details?.rating.rate}</h3>
-                {renderStars(details.rating.rate)}
-              </div>
+              <div className="details__right__item rating"></div>
               <div className="details__right__item">
                 <p>{details?.description}</p>
               </div>

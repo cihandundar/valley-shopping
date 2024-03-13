@@ -45,12 +45,6 @@ export const Navbar = () => {
               )}
             </NavLink>
           </li>
-          <li onClick={showNavbar} className="nav__list__link">
-            <button className="logout">
-              Logout
-              <IoLogOut />
-            </button>
-          </li>
         </ul>
 
         <ul className="nav__list">
@@ -63,6 +57,12 @@ export const Navbar = () => {
             <NavLink to="/signup">
               Sign Up <BsPeopleFill />
             </NavLink>
+          </li>
+          <li onClick={showNavbar} className="nav__list__link">
+            <button className="logout">
+              Logout
+              <IoLogOut />
+            </button>
           </li>
         </ul>
 
