@@ -1,0 +1,90 @@
+.footer {
+  background-color: #0096ff;
+  padding: 20px 0;
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #fff;
+  }
+
+  &__top {
+    margin-bottom: 30px;
+    &__container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+    }
+    &__item {
+      display: flex;
+      &__icon {
+        > svg {
+          font-size: 40px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  &__center {
+    background-color: #000;
+    padding-block: 40px;
+    margin-bottom: 30px;
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      color: #fff;
+    }
+    &__left {
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__input {
+        input {
+          width: 400px;
+          padding: 10px;
+          outline: none;
+        }
+        > button {
+          padding: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__right {
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__logo {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__bottom {
+    &__container {
+      padding-block: 40px;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      > a {
+        color: #fff;
+        font-size: 22px;
+      }
+    }
+    color: #fff;
+    &__list {
+      > ul > li {
+        margin-top: 10px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.nav {
+  background-color: #0096ff;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  &__logo > a {
+    color: #fff;
+  }
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    @include breakpoint(sm) {
+      position: fixed;
+      z-index: 999999;
+      top: -150vh;
+      left: 0;
+      height: 100%;
+      width: 35%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      background-color: #0096ff;
+      transition: 1s;
+    }
+    @include breakpoint(xs) {
+      width: 50%;
+    }
+    @include breakpoint(xss) {
+      width: 100%;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    @include breakpoint(sm) {
+      flex-direction: column;
+    }
+    &__link {
+      position: relative;
+    }
+    &__link > a {
+      color: #fff;
+    }
+
+    &__link:not(:last-child) {
+      margin-right: 20px;
+      @include breakpoint(sm) {
+        margin-right: 0;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  padding: 10px 40px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  border: 1px solid #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.responsive_nav {
+  @include breakpoint(sm) {
+    top: 0;
+  }
+}
+
+.navBtn {
+  display: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #fff;
+  @include breakpoint(sm) {
+    display: block;
+    padding: 10px;
+    background: none;
+    font-size: 25px;
+  }
+}
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  color: #fff;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -20px;
+  right: -5px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
