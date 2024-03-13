@@ -42,14 +42,12 @@
     @include breakpoint(sm) {
       flex-direction: column;
     }
-    &__link {
-      position: relative;
-    }
     &__link > a {
       color: #fff;
     }
 
-    &__link:not(:last-child) {
+    &__link {
+      position: relative;
       margin-right: 20px;
       @include breakpoint(sm) {
         margin-right: 0;
