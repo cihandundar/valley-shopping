@@ -66,6 +66,7 @@ const UpdateCategoryPage = () => {
   return (
     <Spin spinning={loading}>
       <Form
+        form={form}
         name="basic"
         layout="vertical"
         autoComplete="off"
