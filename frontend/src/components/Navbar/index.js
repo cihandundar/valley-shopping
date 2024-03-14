@@ -12,7 +12,7 @@ export const Navbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
   const cart = useSelector((state) => state.cart);
-
+  const user = localStorage.getItem("user");
   return (
     <nav className="nav">
       <div className="nav__container" ref={navRef}>
@@ -58,12 +58,26 @@ export const Navbar = () => {
               Sign Up <BsPeopleFill />
             </NavLink>
           </li>
-          <li onClick={showNavbar} className="nav__list__link">
-            <button className="logout">
-              Logout
-              <IoLogOut />
-            </button>
-          </li>
+          {user && (
+            <li onClick={showNavbar} className="nav__list__link">
+              <button
+                className="logout"
+                onClick={() => {
+                  if (
+                    window.confirm("Çıkış yapmak istediğinize emin misiniz?")
+                  ) {
+                    {
+                      localStorage.removeItem("user");
+                      window.location.href = "/";
+                    }
+                  }
+                }}
+              >
+                Logout
+                <IoLogOut />
+              </button>
+            </li>
+          )}
         </ul>
 
         <button className="navBtn closeBtn" onClick={showNavbar}>

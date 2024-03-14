@@ -27,7 +27,11 @@ const Login = () => {
         const data = await response.json();
         localStorage.setItem("user", JSON.stringify(data));
         message.success("Login successful");
-        navigate("/");
+        if (data.role === "admin") {
+          window.location.href = "/admin";
+        } else {
+          navigate("/");
+        }
       } else {
         message.error("Login failed");
       }
