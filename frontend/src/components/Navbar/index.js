@@ -66,10 +66,8 @@ export const Navbar = () => {
                   if (
                     window.confirm("Çıkış yapmak istediğinize emin misiniz?")
                   ) {
-                    {
-                      localStorage.removeItem("user");
-                      window.location.href = "/";
-                    }
+                    localStorage.removeItem("user");
+                    window.location.href = "/";
                   }
                 }}
               >
