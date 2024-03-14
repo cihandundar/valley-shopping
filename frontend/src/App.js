@@ -11,6 +11,7 @@ import {
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminUserPage from "./pages/admin/AdminUserPage";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/admin/*">
+          <Route path="users" element={<AdminUserPage />} />
+        </Route>
       </Routes>
     </React.Fragment>
   );
