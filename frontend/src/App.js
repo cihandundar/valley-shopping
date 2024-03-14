@@ -6,8 +6,8 @@ import {
   ProductDetail,
   Product,
   Cart,
-  SignIn,
-  SignUp,
+  Login,
+  Register,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,8 +21,8 @@ function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </React.Fragment>

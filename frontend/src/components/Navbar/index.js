@@ -49,12 +49,12 @@ export const Navbar = () => {
 
         <ul className="nav__list">
           <li onClick={showNavbar} className="nav__list__link">
-            <NavLink to="/signin">
+            <NavLink to="/login">
               Sign In <BsPeopleFill />
             </NavLink>
           </li>
           <li onClick={showNavbar} className="nav__list__link">
-            <NavLink to="/signup">
+            <NavLink to="/register">
               Sign Up <BsPeopleFill />
             </NavLink>
           </li>

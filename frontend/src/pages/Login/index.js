@@ -1,24 +1,15 @@
 import React from "react";
 
-const SignUp = () => {
+const Login = () => {
   return (
     <section className="register">
       <div className="register__container">
         <div className="right">
           <div>
-            <h1>Create account</h1>
+            <h1>Sign In</h1>
           </div>
           <div>
             <form className="form">
-              <div className="form__group">
-                <input
-                  type="text"
-                  className="form__control"
-                  id="userName"
-                  name="userName"
-                  placeholder="Enter name"
-                />
-              </div>
               <div className="form__group">
                 <input
                   type="email"
@@ -37,8 +28,9 @@ const SignUp = () => {
                   placeholder="Password"
                 />
               </div>
+
               <div className="form__group">
-                <button type="submit">Sign up</button>
+                <button type="submit">Sign in</button>
               </div>
             </form>
           </div>
@@ -48,4 +40,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

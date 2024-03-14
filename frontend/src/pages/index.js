@@ -1,8 +1,8 @@
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import Login from "./Login";
+import Register from "./Register";
 import Home from "./Home";
 import Cart from "./Cart";
 import Product from "./Product";
 import ProductDetail from "./ProductDetail";
 import Favorites from "./Favorites";
-export { SignIn, SignUp, Home, Cart, Product, ProductDetail, Favorites };
+export { Login, Register, Home, Cart, Product, ProductDetail, Favorites };
