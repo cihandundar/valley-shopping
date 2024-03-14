@@ -8,7 +8,7 @@ const generateRandomAvatar = () => {
   return `https://i.pravatar.cc/300?img=${randomAvatar}`;
 };
 
-// kullanıcı oluşturma işlemi
+// Kullanıcı oluşturma işlemi
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -18,12 +18,12 @@ router.post("/register", async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ error: "Email address is already registed." });
+        .json({ error: "Email address is already registered." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await new User({
+    const newUser = new User({
       username,
       email,
       password: hashedPassword,
@@ -34,26 +34,25 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({ error: "Server error." });
   }
 });
 
-// kullanıcı girişi
-
+// Kullanıcı girişi
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ error: "Invalid password." });
+      return res.status(401).json({ error: "Invalid email or password." });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid password." });
+      return res.status(401).json({ error: "Invalid email or password." });
     }
 
     res.status(200).json({
@@ -64,7 +63,7 @@ router.post("/login", async (req, res) => {
       avatar: user.avatar,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({ error: "Server error." });
   }
 });

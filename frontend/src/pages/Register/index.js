@@ -28,7 +28,7 @@ const Register = () => {
         const data = await response.json();
         localStorage.setItem("user", JSON.stringify(data));
         message.success("Login successful");
-        navigate("/product");
+        navigate("/");
       } else {
         message.error("Operation failed");
       }
@@ -51,8 +51,8 @@ const Register = () => {
                 <input
                   type="text"
                   className="form__control"
-                  id="userName"
-                  name="userName"
+                  id="username"
+                  name="username"
                   placeholder="Enter name"
                   onChange={handleChange}
                 />
