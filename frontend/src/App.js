@@ -11,8 +11,8 @@ import {
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AdminUserPage from "./pages/admin/AdminUserPage";
-
+import UserPage from "./pages/Admin/UserPage";
+import CategoryPage from "./pages/Admin/Categories/CategoryPage";
 function App() {
   return (
     <React.Fragment>
@@ -26,7 +26,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/admin/*">
-          <Route path="users" element={<AdminUserPage />} />
+          <Route path="users" element={<UserPage />} />
+          <Route path="categories" element={<CategoryPage />} />
         </Route>
       </Routes>
     </React.Fragment>

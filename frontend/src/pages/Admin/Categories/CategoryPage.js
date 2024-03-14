@@ -1,6 +1,6 @@
-import { Table, message } from "antd";
+import { Button, Popconfirm, Table, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
-const AdminUserPage = () => {
+const CategoryPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +36,24 @@ const AdminUserPage = () => {
       dataIndex: "role",
       key: "role",
     },
+    {
+      title: "Actions",
+      dataIndex: "Actions",
+      key: "actions",
+      render: (_, record) => (
+        <Popconfirm
+          title="Kullanıcıyı Sil"
+          description="Kullanıcıyı silmek istediğinizden emin misiniz?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => deleteUser(record.email)}
+        >
+          <Button type="primary" danger>
+            Delete
+          </Button>
+        </Popconfirm>
+      ),
+    },
   ];
 
   const fetchUsers = useCallback(async () => {
@@ -57,9 +75,30 @@ const AdminUserPage = () => {
     }
   }, []);
 
+  const deleteUser = async (userEmail) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${userEmail}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        message.success("Kullanıcı başarıyla silindi.");
+        fetchUsers();
+      } else {
+        message.error("Silme işlemi başarısız.");
+      }
+    } catch (error) {
+      console.log("Silme hatası:", error);
+    }
+  };
+
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+
   return (
     <Table
       dataSource={dataSource}
@@ -70,4 +109,4 @@ const AdminUserPage = () => {
   );
 };
 
-export default AdminUserPage;
+export default CategoryPage;
