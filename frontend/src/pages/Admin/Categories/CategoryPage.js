@@ -1,10 +1,10 @@
 import { Button, Popconfirm, Space, Table, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const CategoryPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const columns = [
     {
       title: "Category Image",
@@ -24,7 +24,12 @@ const CategoryPage = () => {
       key: "actions",
       render: (_, record) => (
         <Space>
-          <Button type="primary">Düzenle</Button>
+          <Button
+            type="primary"
+            onClick={() => navigate(`/admin/categories/update/${record._id}`)}
+          >
+            Düzenle
+          </Button>
           <Popconfirm
             title="Kullanıcıyı Sil"
             description="Kullanıcıyı silmek istediğinizden emin misiniz?"
