@@ -202,10 +202,9 @@ const CreateProductPage = () => {
           </Select>
         </Form.Item>
 
-        {/* 
         <Button type="primary" htmlType="submit">
           Oluştur
-        </Button> */}
+        </Button>
       </Form>
     </Spin>
   );
