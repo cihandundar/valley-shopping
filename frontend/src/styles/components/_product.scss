@@ -1,0 +1,27 @@
+.item {
+  padding-bottom: 30px;
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__box {
+    cursor: pointer;
+    margin-top: 20px;
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  &__img img {
+    width: 250px;
+    height: 300px;
+    object-fit: contain;
+  }
+}
