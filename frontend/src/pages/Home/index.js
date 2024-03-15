@@ -1,10 +1,11 @@
 import React from "react";
-import Categories from "../../components/Catergories";
+import { Categories, Product } from "../../components";
 
 const Home = () => {
   return (
     <main className="home">
       <Categories />
+      <Product />
     </main>
   );
 };

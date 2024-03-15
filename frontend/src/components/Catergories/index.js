@@ -31,7 +31,11 @@ const Categories = () => {
           {categories.map((category) => (
             <div className="category__wrapper" key={category.id}>
               <div className="category__img">
-                <img src={category.img} alt="" />
+                {category.img && (
+                  <div className="category__img">
+                    <img src={category.img} alt="" />
+                  </div>
+                )}
               </div>
               <div className="category__name">
                 <h3>{category.name}</h3>
