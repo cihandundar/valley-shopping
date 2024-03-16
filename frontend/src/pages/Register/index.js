@@ -3,7 +3,6 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
-  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -18,7 +17,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiUrl}/api/auth/register`, {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,13 +12,14 @@ import {
 } from "../../features/product/cartSlice";
 
 const Cart = () => {
+  const stripePublicKey = import.meta.env.REACT_APP_API_STRIPE_PUBLIC_KEY;
   const item = useSelector((state) => state?.cart);
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
   const dispatch = useDispatch();
-  const stripePublicKey = import.meta.env.REACT_APP_API_STRIPE_PUBLIC_KEY;
+
   const handleClearCart = () => {
     dispatch(clearCart());
   };
