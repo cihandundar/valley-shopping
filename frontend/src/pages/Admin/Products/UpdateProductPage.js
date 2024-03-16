@@ -8,7 +8,7 @@ const UpdateProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   const [form] = Form.useForm();
   const params = useParams();
   const productId = params.id;
@@ -19,8 +19,8 @@ const UpdateProductPage = () => {
 
       try {
         const [categoriesResponse, singleProductResponse] = await Promise.all([
-          fetch(`http://localhost:5000/api/categories`),
-          fetch(`http://localhost:5000/api/products/${productId}`),
+          fetch(`${apiUrl}/api/categories`),
+          fetch(`${apiUrl}/api/products/${productId}`),
         ]);
 
         if (!categoriesResponse.ok || !singleProductResponse.ok) {
@@ -63,25 +63,22 @@ const UpdateProductPage = () => {
     const sizes = values.sizes.split("\n").map((link) => link.trim());
     setLoading(true);
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/products/${productId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
+      const response = await fetch(`${apiUrl}/api/products/${productId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          price: {
+            current: values.current,
+            discount: values.discount,
           },
-          body: JSON.stringify({
-            ...values,
-            price: {
-              current: values.current,
-              discount: values.discount,
-            },
-            colors,
-            sizes,
-            img: imgLinks,
-          }),
-        }
-      );
+          colors,
+          sizes,
+          img: imgLinks,
+        }),
+      });
 
       if (response.ok) {
         message.success("Ürün başarıyla güncellendi.");

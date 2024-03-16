@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { message } from "antd";
+import { loadStripe } from "@stripe/stripe-js";
 import {
   addToCart,
   clearCart,
@@ -11,9 +13,12 @@ import {
 
 const Cart = () => {
   const item = useSelector((state) => state?.cart);
+  const user = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
 
   const dispatch = useDispatch();
-
+  const stripePublicKey = import.meta.env.REACT_APP_API_STRIPE_PUBLIC_KEY;
   const handleClearCart = () => {
     dispatch(clearCart());
   };
@@ -40,6 +45,21 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [item, dispatch]);
+
+  const handlePayment = async () => {
+    if (!user) {
+      return message.info("Ödeme yapabilmek için giriş yapınız");
+    }
+    const body = {
+      products: item,
+      user: user,
+    };
+    try {
+      const stripe = await loadStripe(stripePublicKey);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="cart">
@@ -123,7 +143,9 @@ const Cart = () => {
                     </h3>
                   </div>
                   <Link to="#">
-                    <button className="check">Check out</button>
+                    <button className="check" onClick={handlePayment}>
+                      Check out
+                    </button>
                   </Link>
                 </div>
               </div>

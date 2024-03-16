@@ -6,13 +6,13 @@ const CreateProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [form] = Form.useForm();
-
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   useEffect(() => {
     const fetchCategories = async () => {
       setLoading(true);
 
       try {
-        const response = await fetch(`http://localhost:5000/api/categories`);
+        const response = await fetch(`${apiUrl}/api/categories`);
 
         if (response.ok) {
           const data = await response.json();
@@ -28,7 +28,7 @@ const CreateProductPage = () => {
     };
 
     fetchCategories();
-  }, []);
+  }, [apiUrl]);
 
   const onFinish = async (values) => {
     const imgLinks = values.img.split("\n").map((link) => link.trim());
@@ -36,7 +36,7 @@ const CreateProductPage = () => {
     const sizes = values.sizes.split("\n").map((link) => link.trim());
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/products`, {
+      const response = await fetch(`${apiUrl}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

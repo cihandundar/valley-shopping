@@ -5,6 +5,7 @@ const CategoryPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   const columns = [
     {
       title: "Category Image",
@@ -50,7 +51,7 @@ const CategoryPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/categories`);
+      const response = await fetch(`${apiUrl}/api/categories`);
 
       if (response.ok) {
         const data = await response.json();
@@ -63,16 +64,13 @@ const CategoryPage = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [apiUrl]);
 
   const deleteCategory = async (categoryId) => {
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/categories/${categoryId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
+        method: "DELETE",
+      });
 
       if (response.ok) {
         message.success("Kategori başarıyla silindi.");

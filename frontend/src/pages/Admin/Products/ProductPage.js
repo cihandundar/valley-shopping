@@ -6,7 +6,7 @@ const ProductPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   const columns = [
     {
       title: "Product Görseli",
@@ -68,12 +68,9 @@ const ProductPage = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/products/${productId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${apiUrl}/api/products/${productId}`, {
+        method: "DELETE",
+      });
 
       if (response.ok) {
         message.success("Kategori başarıyla silindi.");
@@ -94,8 +91,8 @@ const ProductPage = () => {
 
       try {
         const [categoriesResponse, productsResponse] = await Promise.all([
-          fetch(`http://localhost:5000/api/categories`),
-          fetch(`http://localhost:5000/api/products`),
+          fetch(`${apiUrl}/api/categories`),
+          fetch(`${apiUrl}/api/products`),
         ]);
 
         if (!categoriesResponse.ok || !productsResponse.ok) {
@@ -127,7 +124,7 @@ const ProductPage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [apiUrl]);
 
   return (
     <Table

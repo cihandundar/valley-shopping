@@ -6,20 +6,17 @@ const UpdateCategoryPage = () => {
   const [form] = Form.useForm();
   const params = useParams();
   const categoryId = params.id;
-
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/categories/${categoryId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch(`${apiUrl}/categories/${categoryId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
       if (response.ok) {
         message.success("Kategori başarıyla güncellendi.");
@@ -38,9 +35,7 @@ const UpdateCategoryPage = () => {
       setLoading(true);
 
       try {
-        const response = await fetch(
-          `http://localhost:5000/api/categories/${categoryId}`
-        );
+        const response = await fetch(`${apiUrl}/api/categories/${categoryId}`);
 
         if (!response.ok) {
           throw new Error("Verileri getirme hatası");
@@ -61,7 +56,7 @@ const UpdateCategoryPage = () => {
       }
     };
     fetchSingleCategory();
-  }, [categoryId, form]);
+  }, [apiUrl, categoryId, form]);
 
   return (
     <Spin spinning={loading}>
