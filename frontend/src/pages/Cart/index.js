@@ -12,7 +12,6 @@ import {
 } from "../../features/product/cartSlice";
 
 const Cart = () => {
-  const stripePublicKey = import.meta.env.REACT_APP_API_STRIPE_PUBLIC_KEY;
   const item = useSelector((state) => state?.cart);
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -56,7 +55,24 @@ const Cart = () => {
       user: user,
     };
     try {
-      const stripe = await loadStripe(stripePublicKey);
+      const stripe = await loadStripe(
+        `pk_test_51OsrjpE1J0HVRrfg3foAwvTJnByKnLnZ5fdQoDrbWCK70TDzoF1SBjM1CDZrshF65j4zH8CpJTrMRjzlqAtXOuLO00NDXtdjSf`
+      );
+      const res = await fetch(`http://localhost:5000/api/payment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        return message.error("Ödeme işlemi başarısız oldu");
+      }
+      const session = res.json();
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+      if (result.error) {
+        throw new Error(result.error.message);
+      }
     } catch (error) {
       console.log(error);
     }
