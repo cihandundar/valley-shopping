@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { message } from "antd";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import {
   addToCart,
   clearCart,
@@ -10,7 +10,7 @@ import {
   getTotals,
   remove,
 } from "../../features/product/cartSlice";
-
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 const Cart = () => {
   const item = useSelector((state) => state?.cart);
   const user = localStorage.getItem("user")
@@ -50,32 +50,33 @@ const Cart = () => {
     if (!user) {
       return message.info("Ödeme yapabilmek için giriş yapınız");
     }
-    const body = {
-      products: item,
-      user: user,
-    };
-    try {
-      const stripe = await loadStripe(
-        `pk_test_51OsrjpE1J0HVRrfg3foAwvTJnByKnLnZ5fdQoDrbWCK70TDzoF1SBjM1CDZrshF65j4zH8CpJTrMRjzlqAtXOuLO00NDXtdjSf`
-      );
-      const res = await fetch(`http://localhost:5000/api/payment`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        return message.error("Ödeme işlemi başarısız oldu");
-      }
-      const session = res.json();
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // const body = {
+    //   product: item,
+    //   user: user,
+    // };
+    // try {
+    //   const stripe = await loadStripe(
+    //     `pk_test_51OsrjpE1J0HVRrfg3foAwvTJnByKnLnZ5fdQoDrbWCK70TDzoF1SBjM1CDZrshF65j4zH8CpJTrMRjzlqAtXOuLO00NDXtdjSf`
+    //   );
+    //   const res = await fetch(`http://localhost:5000/api/payment`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(body),
+    //   });
+    //   console.log(body);
+    //   if (!res.ok) {
+    //     return message.error("Ödeme işlemi başarısız oldu");
+    //   }
+    //   const session = res.json();
+    //   const result = await stripe.redirectToCheckout({
+    //     sessionId: session.id,
+    //   });
+    //   if (result.error) {
+    //     throw new Error(result.error.message);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -92,56 +93,58 @@ const Cart = () => {
           </div>
         ) : (
           <div className="cart__wrapper">
-            <h2>Shopping Cart</h2>
-            <div className="cart__wrapper__title">
-              <h3>Product</h3>
-              <h3>Price</h3>
-              <h3>Quantity</h3>
-              <h3>Total</h3>
-            </div>
-            {item?.cartItems?.map((items) => (
-              <div className="cart__box" key={items?.id}>
-                <div className="cart__box__img">
-                  <Link to={`/product/${items.id}`}>
-                    <img src={items?.image} alt="" />
-                  </Link>
-                  <div className="cart__box__title">
-                    <h3>{items?.title}</h3>
-                    <button onClick={() => handleCart(items, "remove")}>
-                      Remove
+            <div className="cart__wrapper__container">
+              <h2>Shopping Cart</h2>
+              <div className="cart__wrapper__title">
+                <h3>Product</h3>
+                <h3>Price</h3>
+                <h3>Quantity</h3>
+                <h3>Total</h3>
+              </div>
+              {item?.cartItems?.map((items) => (
+                <div className="cart__box" key={items?.id}>
+                  <div className="cart__box__img">
+                    <Link to={`/product/${items.id}`}>
+                      <img src={items?.image} alt="" />
+                    </Link>
+                    <div className="cart__box__title">
+                      <h3>{items?.title}</h3>
+                      <button onClick={() => handleCart(items, "remove")}>
+                        <HighlightOffIcon />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="cart__box__price">
+                    {items?.price !== undefined && items?.price !== null && (
+                      <div>
+                        {items?.price.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                      </div>
+                    )}
+                  </div>
+                  <div className="cart__box__quantity">
+                    <button onClick={() => handleCart(items, "decrease")}>
+                      -
+                    </button>
+                    <div className="count">{items.cartQuantity}</div>
+                    <button onClick={() => handleCart(items, "increase")}>
+                      +
                     </button>
                   </div>
-                </div>
-                <div className="cart__box__price">
-                  {items?.price !== undefined && items?.price !== null && (
-                    <div>
-                      {items?.price.toLocaleString("en-US", {
+                  <div className="cart__box__total">
+                    {(items?.price * items?.cartQuantity).toLocaleString(
+                      "en-US",
+                      {
                         style: "currency",
                         currency: "USD",
-                      })}
-                    </div>
-                  )}
+                      }
+                    )}
+                  </div>
                 </div>
-                <div className="cart__box__quantity">
-                  <button onClick={() => handleCart(items, "decrease")}>
-                    -
-                  </button>
-                  <div className="count">{items.cartQuantity}</div>
-                  <button onClick={() => handleCart(items, "increase")}>
-                    +
-                  </button>
-                </div>
-                <div className="cart__box__total">
-                  {(items?.price * items?.cartQuantity).toLocaleString(
-                    "en-US",
-                    {
-                      style: "currency",
-                      currency: "USD",
-                    }
-                  )}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
             <div className="cart__box__summary">
               <div className="cart__box__checkout">
                 <div className="cart__box__clear">
@@ -159,7 +162,7 @@ const Cart = () => {
                       })}
                     </h3>
                   </div>
-                  <Link to="#">
+                  <Link to="/checkout">
                     <button className="check" onClick={handlePayment}>
                       Check out
                     </button>
