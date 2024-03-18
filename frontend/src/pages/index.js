@@ -5,4 +5,16 @@ import Cart from "./Cart";
 import Product from "./Product";
 import ProductDetail from "./ProductDetail";
 import Favorites from "./Favorites";
-export { Login, Register, Home, Cart, Product, ProductDetail, Favorites };
+import Checkout from "./Checkout";
+import Success from "./Success";
+export {
+  Login,
+  Register,
+  Home,
+  Cart,
+  Product,
+  ProductDetail,
+  Favorites,
+  Checkout,
+  Success,
+};
