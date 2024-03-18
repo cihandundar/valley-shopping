@@ -47,7 +47,7 @@ const Checkout = () => {
       <div className="checkout__wrapper">
         <div className="checkout__container">
           {item?.cartItems?.length === 0 ? (
-            <div className="cart__empty">
+            <div className="checkout__empty">
               <div className="cart__shopping">
                 <Link to="/product">
                   <span>Go shopping now</span>

@@ -1,0 +1,48 @@
+.success {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__box {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    &__img {
+      > img {
+        width: 100px;
+      }
+    }
+    &__center {
+      > p {
+        margin-block: 10px;
+      }
+    }
+    &__bottom {
+      > button {
+        cursor: pointer;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 10px;
+        background: green;
+
+        > a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

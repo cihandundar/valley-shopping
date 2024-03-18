@@ -1,5 +1,8 @@
 .checkout {
   padding-bottom: 30px;
+  &__empty {
+    height: 50vh;
+  }
   &__wrapper {
     display: flex;
     justify-content: space-around;
