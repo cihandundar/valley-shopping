@@ -1,6 +1,7 @@
 .footer {
   background-color: #0096ff;
   padding: 20px 0;
+
   &__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -15,9 +16,17 @@
       display: flex;
       justify-content: space-between;
       color: #fff;
+
+      @include breakpoint(md) {
+        flex-direction: column;
+        padding-left: 20px;
+      }
     }
     &__item {
       display: flex;
+      @include breakpoint(md) {
+        margin-top: 20px;
+      }
       &__icon {
         > svg {
           font-size: 40px;
@@ -37,6 +46,10 @@
       max-width: 1200px;
       margin: 0 auto;
       color: #fff;
+      @include breakpoint(md) {
+        flex-direction: column;
+        padding-left: 20px;
+      }
     }
     &__left {
       &__title {
@@ -44,6 +57,9 @@
       }
       &__input {
         input {
+          @include breakpoint(md) {
+            width: 300px;
+          }
           width: 400px;
           padding: 10px;
           outline: none;
@@ -56,6 +72,9 @@
     }
 
     &__right {
+      @include breakpoint(md) {
+        margin-top: 20px;
+      }
       &__title {
         margin-bottom: 20px;
       }
@@ -73,6 +92,10 @@
       justify-content: space-between;
       max-width: 1200px;
       margin: 0 auto;
+      @include breakpoint(md) {
+        flex-direction: column;
+        padding-left: 20px;
+      }
       > a {
         color: #fff;
         font-size: 22px;
@@ -80,6 +103,9 @@
     }
     color: #fff;
     &__list {
+      @include breakpoint(md) {
+        margin-top: 20px;
+      }
       > ul > li {
         margin-top: 10px;
         font-size: 0.8rem;

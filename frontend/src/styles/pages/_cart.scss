@@ -22,13 +22,17 @@
   }
   &__wrapper {
     display: flex;
+    @include breakpoint(md) {
+      flex-direction: column;
+    }
     &__container {
       width: 100%;
+      > h2 {
+        margin-bottom: 30px;
+        text-align: center;
+      }
     }
-    > h2 {
-      margin-bottom: 30px;
-      text-align: center;
-    }
+
     &__title {
       display: flex;
       justify-content: space-between;

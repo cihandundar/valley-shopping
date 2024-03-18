@@ -5,6 +5,17 @@
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
+    @include breakpoint(md) {
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+      text-align: center;
+    }
+  }
+  &__container {
+    @include breakpoint(md) {
+      margin-bottom: 20px;
+    }
   }
   &__box {
     width: 300px;
