@@ -73,7 +73,7 @@ const UpdateCategoryPage = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="Kategori İsmi"
+          label="Category Name"
           name="name"
           rules={[
             {
@@ -86,7 +86,7 @@ const UpdateCategoryPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Kategori Görseli (Link)"
+          label="Category Image (Link)"
           name="img"
           rules={[
             {
@@ -99,7 +99,7 @@ const UpdateCategoryPage = () => {
         </Form.Item>
 
         <Button type="primary" htmlType="submit">
-          Güncelle
+          Update
         </Button>
       </Form>
     </Spin>

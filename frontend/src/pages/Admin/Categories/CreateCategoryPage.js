@@ -33,7 +33,7 @@ const CreateCategoryPage = () => {
     <Spin spinning={loading}>
       <Form name="basic" layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
-          label="Kategori İsmi"
+          label="Category Name"
           name="name"
           rules={[
             {
@@ -46,7 +46,7 @@ const CreateCategoryPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Kategori Görseli (Link)"
+          label="Category Image (Link)"
           name="img"
           rules={[
             {
@@ -59,7 +59,7 @@ const CreateCategoryPage = () => {
         </Form.Item>
 
         <Button type="primary" htmlType="submit">
-          Oluştur
+          Create
         </Button>
       </Form>
     </Spin>
