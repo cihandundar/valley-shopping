@@ -8,6 +8,8 @@ import {
   Cart,
   Login,
   Register,
+  Checkout,
+  Success,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +20,8 @@ import CreateCategoryPage from "./pages/Admin/Categories/CreateCategoryPage";
 import CreateProductPage from "./pages/Admin/Products/CreateProductPage";
 import ProductPage from "./pages/Admin/Products/ProductPage";
 import UpdateProductPage from "./pages/Admin/Products/UpdateProductPage";
+// import OrderPage from "./pages/Admin/OrderPage";
+import DashboardPage from "./pages/Admin/DashboardPage";
 function App() {
   return (
     <React.Fragment>
@@ -30,7 +34,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/success" element={<Success />} />
+
         <Route path="/admin/*">
+          <Route index element={<DashboardPage />} />
           <Route path="users" element={<UserPage />} />
           <Route path="categories" element={<CategoryPage />} />
           <Route path="categories/create" element={<CreateCategoryPage />} />
@@ -41,6 +49,7 @@ function App() {
           <Route path="products/create" element={<CreateProductPage />} />
           <Route path="products" element={<ProductPage />} />
           <Route path="products/update/:id" element={<UpdateProductPage />} />
+          {/* <Route path="orders" element={<OrderPage />} /> */}
         </Route>
       </Routes>
     </React.Fragment>
