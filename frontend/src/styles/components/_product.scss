@@ -9,6 +9,9 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    @include breakpoint(sm) {
+      justify-content: center;
+    }
   }
 
   &__box {

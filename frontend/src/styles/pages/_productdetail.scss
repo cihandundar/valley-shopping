@@ -12,23 +12,43 @@
   &__wrapper {
     display: flex;
     align-items: center;
+    @include breakpoint(sm) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
   &__left {
     > img {
       width: 300px;
+      @include breakpoint(sm) {
+        width: 150px;
+      }
     }
   }
   &__right {
     padding: 90px;
+    @include breakpoint(sm) {
+      padding: 10px;
+    }
     &__item {
       margin-bottom: 10px;
       > h2 {
         font-size: 2rem;
+        @include breakpoint(sm) {
+          font-size: 1.3rem;
+        }
       }
     }
 
     &__btn {
+      @include breakpoint(sm) {
+        display: inline-flex;
+        flex-direction: column;
+      }
       > button {
+        @include breakpoint(sm) {
+          margin-bottom: 10px;
+        }
         background-color: #0096ff;
         color: #fff;
         padding: 10px 40px;
