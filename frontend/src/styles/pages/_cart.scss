@@ -34,8 +34,9 @@
       justify-content: space-between;
       margin-bottom: 10px;
       padding: 15px;
+      font-size: 0.8rem;
       :nth-child(2) {
-        margin-left: 60px;
+        margin-left: 20px;
       }
       @include breakpoint(sm) {
         display: none;
