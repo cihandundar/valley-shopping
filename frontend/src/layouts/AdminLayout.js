@@ -33,12 +33,12 @@ const AdminLayout = ({ children }) => {
     {
       key: "2",
       icon: <AppstoreOutlined />,
-      label: "Kategoriler",
+      label: "Categories",
       path: "/",
       children: [
         {
           key: "3",
-          label: "Kategori Listesi",
+          label: "Category List",
           path: "/admin/categories",
           onClick: () => {
             navigate(`/admin/categories`);
@@ -46,7 +46,7 @@ const AdminLayout = ({ children }) => {
         },
         {
           key: "4",
-          label: "Yeni Kategori Oluştur",
+          label: "New Category",
           path: "/admin/categories/create",
           onClick: () => {
             navigate("/admin/categories/create");
@@ -57,12 +57,12 @@ const AdminLayout = ({ children }) => {
     {
       key: "5",
       icon: <LaptopOutlined />,
-      label: "Ürünler",
+      label: "Product",
       path: "/",
       children: [
         {
           key: "6",
-          label: "Ürün Listesi",
+          label: "Product List",
           path: "/admin/products",
           onClick: () => {
             navigate(`/admin/products`);
@@ -70,7 +70,7 @@ const AdminLayout = ({ children }) => {
         },
         {
           key: "7",
-          label: "Yeni Ürün Oluştur",
+          label: "New Product",
           path: "/admin/products/create",
           onClick: () => {
             navigate("/admin/products/create");
@@ -81,24 +81,17 @@ const AdminLayout = ({ children }) => {
     {
       key: "11",
       icon: <UserOutlined />,
-      label: "Kullanıcı Listesi",
+      label: "Users List",
       path: "/admin/users",
       onClick: () => {
         navigate(`/admin/users`);
       },
     },
-    {
-      key: "12",
-      icon: <ShoppingCartOutlined />,
-      label: "Siparişler",
-      onClick: () => {
-        navigate(`/admin/orders`);
-      },
-    },
+
     {
       key: "13",
       icon: <RollbackOutlined />,
-      label: "Ana Sayfaya Git",
+      label: "Go Home Page",
       onClick: () => {
         window.location.href = "/";
       },
