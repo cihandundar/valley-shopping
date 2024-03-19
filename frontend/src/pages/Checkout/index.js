@@ -36,6 +36,10 @@ const Checkout = () => {
     if (!number || !name || !expiry || !cvc) {
       setFormError("Please fill out all fields");
     } else {
+      if (!/^\d+$/.test(number) || !/^\d+$/.test(cvc)) {
+        setFormError("Please enter valid number for card number and cvc");
+        return;
+      }
       setFormError(null);
       window.location.href = "/success";
       dispatch(clearCart());
