@@ -1,13 +1,13 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Drawer, Button } from "antd";
 import PropTypes from "prop-types";
 import {
   UserOutlined,
   LaptopOutlined,
   RollbackOutlined,
   DashboardOutlined,
-  ShoppingCartOutlined,
   AppstoreOutlined,
 } from "@ant-design/icons";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const { Sider, Header, Content } = Layout;
@@ -20,6 +20,7 @@ const getUserRole = () => {
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
   const userRole = getUserRole();
+  const [visible, setVisible] = useState(false);
 
   const menuItems = [
     {
@@ -98,57 +99,63 @@ const AdminLayout = ({ children }) => {
     },
   ];
 
-  if (userRole === `admin`) {
-    return (
-      <div>
-        <Layout
-          style={{
-            minHeight: "100vh",
-          }}
-        >
-          <Sider width={200} theme="dark">
-            <Menu
-              mode="vertical"
-              style={{
-                height: "100%",
-              }}
-              items={menuItems}
-            />
-          </Sider>
-          <Layout>
-            <Header>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  color: "white",
-                }}
-              >
-                <h2>Admin Paneli</h2>
-              </div>
-            </Header>
-            <Content>
-              <div
-                className="site-layout-background"
-                style={{
-                  padding: "24px 50px",
-                  minHeight: 360,
-                }}
-              >
-                {children}
-              </div>
-            </Content>
-          </Layout>
-        </Layout>
-      </div>
-    );
-  } else {
-    return (window.location.href = "/");
-  }
+  return (
+    <Layout style={{ minHeight: "100vh" }}>
+      <Button
+        type="primary"
+        onClick={() => setVisible(true)}
+        style={{ position: "fixed", top: "15px", left: "15px" }}
+      >
+        Menü
+      </Button>
+      <Drawer
+        title="Admin Panel"
+        placement="left"
+        onClose={() => setVisible(false)}
+        visible={visible}
+      >
+        <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
+          {menuItems.map((item) => {
+            if (item.children) {
+              return (
+                <Menu.SubMenu
+                  key={item.key}
+                  icon={item.icon}
+                  title={item.label}
+                >
+                  {item.children.map((child) => (
+                    <Menu.Item key={child.key} onClick={child.onClick}>
+                      {child.label}
+                    </Menu.Item>
+                  ))}
+                </Menu.SubMenu>
+              );
+            }
+            return (
+              <Menu.Item key={item.key} icon={item.icon} onClick={item.onClick}>
+                {item.label}
+              </Menu.Item>
+            );
+          })}
+        </Menu>
+      </Drawer>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Content style={{ margin: "24px 16px 0" }}>
+          <div
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 360 }}
+          >
+            {children}
+          </div>
+        </Content>
+      </Layout>
+    </Layout>
+  );
 };
-
-export default AdminLayout;
 
 AdminLayout.propTypes = {
   children: PropTypes.node,
 };
+
+export default AdminLayout;

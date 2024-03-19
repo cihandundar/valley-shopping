@@ -1,6 +1,7 @@
 import { Button, Popconfirm, Space, Table, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const CategoryPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -95,6 +96,7 @@ const CategoryPage = () => {
       columns={columns}
       rowKey={(record) => record._id}
       loading={loading}
+      scroll={{ x: true }}
     />
   );
 };
