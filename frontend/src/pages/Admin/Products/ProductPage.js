@@ -9,7 +9,7 @@ const ProductPage = () => {
 
   const columns = [
     {
-      title: "Product Görseli",
+      title: "Product Image",
       dataIndex: "img",
       key: "img",
       render: (imgSrc) => <img src={imgSrc[0]} alt="Image" width={100} />,
@@ -21,19 +21,19 @@ const ProductPage = () => {
       render: (text) => <b>{text}</b>,
     },
     {
-      title: "Kategori",
+      title: "Category",
       dataIndex: "categoryName",
       key: "categoryName",
       render: (text) => <span>{text}</span>,
     },
     {
-      title: "Fiyat",
+      title: "Price",
       dataIndex: "price",
       key: "price",
       render: (text) => <span>{text.current.toFixed(2)}</span>,
     },
     {
-      title: "İndirim",
+      title: "Discount",
       dataIndex: "price",
       key: "price",
       render: (text) => <span>%{text.discount}</span>,
@@ -48,7 +48,7 @@ const ProductPage = () => {
             type="primary"
             onClick={() => navigate(`/admin/products/update/${record._id}`)}
           >
-            Düzenle
+            Update
           </Button>
           <Popconfirm
             title="Kategoriyi Sil"
