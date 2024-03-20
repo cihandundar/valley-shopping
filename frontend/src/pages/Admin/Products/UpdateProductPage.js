@@ -100,7 +100,7 @@ const UpdateProductPage = () => {
     <Spin spinning={loading}>
       <Form name="basic" layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
-          label="Ürün İsmi"
+          label="Product Name"
           name="name"
           rules={[
             {
@@ -112,7 +112,7 @@ const UpdateProductPage = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label="Ürün Kategorisi"
+          label="Product Category"
           name="category"
           rules={[
             {
@@ -130,7 +130,7 @@ const UpdateProductPage = () => {
           </Select>
         </Form.Item>
         <Form.Item
-          label="Fiyat"
+          label="Price"
           name="current"
           rules={[
             {
@@ -142,7 +142,7 @@ const UpdateProductPage = () => {
           <InputNumber />
         </Form.Item>
         <Form.Item
-          label="İndirim Oranı"
+          label="Discount"
           name="discount"
           rules={[
             {
@@ -154,7 +154,7 @@ const UpdateProductPage = () => {
           <InputNumber />
         </Form.Item>
         <Form.Item
-          label="Ürün Açıklaması"
+          label="Description"
           name="description"
           rules={[
             {
@@ -171,7 +171,7 @@ const UpdateProductPage = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Ürün Görselleri (Linkler)"
+          label="Product Images (Links)"
           name="img"
           rules={[
             {
@@ -186,7 +186,7 @@ const UpdateProductPage = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Ürün Renkleri (RGB Kodları)"
+          label="Product Colors (RGB Kodları)"
           name="colors"
           rules={[
             {
@@ -201,7 +201,7 @@ const UpdateProductPage = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Ürün Bedenleri"
+          label="Product Sizes"
           name="sizes"
           rules={[
             {
