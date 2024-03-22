@@ -18,7 +18,7 @@ const connect = async () => {
   }
 };
 app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+  response.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 });
 
 // middlewares
