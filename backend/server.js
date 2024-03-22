@@ -17,6 +17,9 @@ const connect = async () => {
     throw error;
   }
 };
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 // middlewares
 app.use(logger("dev"));
