@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { message } from "antd";
+
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
@@ -25,23 +26,27 @@ const Categories = () => {
     <section className="category">
       <div className="category__container">
         <div className="category__container__title">
-          <h2>All Categories</h2>
+          <h2>{categories.length === 0 ? "" : "All Categories"}</h2>
         </div>
         <div className="category__item">
-          {categories.map((category) => (
-            <div className="category__wrapper" key={category.id}>
-              <div className="category__img">
-                {category.img && (
-                  <div className="category__img">
-                    <img src={category.img} alt="" />
-                  </div>
-                )}
+          {categories.length === 0 ? (
+            <p></p>
+          ) : (
+            categories.map((category) => (
+              <div className="category__wrapper" key={category.id}>
+                <div className="category__img">
+                  {category.img && (
+                    <div className="category__img">
+                      <img src={category.img} alt="" />
+                    </div>
+                  )}
+                </div>
+                <div className="category__name">
+                  <h3>{category.name}</h3>
+                </div>
               </div>
-              <div className="category__name">
-                <h3>{category.name}</h3>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>
