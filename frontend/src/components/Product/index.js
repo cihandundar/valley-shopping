@@ -24,24 +24,26 @@ const Product = () => {
 
   return (
     <section className="item">
-      <div className="item__container">
-        <div className="item__title">
-          <h2>Product</h2>
-        </div>
-        <div className="item__wrapper">
-          {products.map((product) => (
-            <div className="item__box" key={product.id}>
-              <div className="item__img">
-                <img src={product.img} alt="" />
+      {products.length > 0 && (
+        <div className="item__container">
+          <div className="item__title">
+            <h2>Product</h2>
+          </div>
+          <div className="item__wrapper">
+            {products.map((product) => (
+              <div className="item__box" key={product.id}>
+                <div className="item__img">
+                  <img src={product.img} alt="" />
+                </div>
+                <div className="item__name">
+                  <h3>{product.name}</h3>
+                </div>
+                <div className="item__price">${product.price.current}</div>
               </div>
-              <div className="item__name">
-                <h3>{product.name}</h3>
-              </div>
-              <div className="item__price">${product.price.current}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
